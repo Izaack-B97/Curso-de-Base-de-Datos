@@ -10,3 +10,9 @@ CREATE TABLE autores (
     fecha_nacimiento DATE,
     pais_origen VARCHAR(40)
 );
+
+--  Crea una tabla a partir de otra
+CREATE TABLE usuarios LIKE autores:
+
+INSERT INTO autores (autor_id, nombre, apellido, genero, fecha_nacimiento, pais_origen)
+VALUES (1, 'Test Autor', 'Test Autor', 'M', '2018-01-30', 'Mexico');
