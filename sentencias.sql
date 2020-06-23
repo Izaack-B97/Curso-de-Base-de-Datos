@@ -15,7 +15,8 @@ CREATE TABLE IF NOT EXISTS autores (
     seudonimo VARCHAR(50) UNIQUE,
     genero CHAR(1) NOT NULL, -- M O F
     fecha_nacimiento DATE NOT NULL,
-    pais_origen VARCHAR(40) NOT NULL
+    pais_origen VARCHAR(40) NOT NULL,
+    fecha_creacion DATETIME DEFAULT current_timestamp 
 );
 
 --  Crea una tabla a partir de otra
