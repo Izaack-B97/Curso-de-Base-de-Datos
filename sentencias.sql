@@ -118,4 +118,5 @@ SELECT books.autor_id AS books.autor, titulo AS nombre FROM libros AS books;
 UPDATE libros SET descripcion = 'Nueva Descripcion' WHERE titulo = 'El Hobbit';
 DELETE FROM libros HHERE autor_id = 1; 
 
--- Eliminacion en cascada
+-- Restauracion de una tabla 
+TRUNCATE TABLE libros -- Elimina todos los registros de una tabla, resetea la definicion de la tabla
