@@ -28,7 +28,10 @@ CREATE TABLE libros(
     fecha_publicacion DATE NOT NULL,
     fecha_creacion DATETIME DEFAULT current_timestamp,
 
-    FOREIGN KEY (autor_id) REFERENCES autores(autor_id)
+    FOREIGN KEY (autor_id) REFERENCES autores(autor_id) ON DELETE CASCADE
+
+    -- ALTER TABLE libros ADD FOREIGN KEY (autor_id) REFERENCES autores(autor_id) ON DELETE CASCADE
+
 );
 
 --  Crea una tabla a partir de otra
@@ -104,3 +107,15 @@ SELECT * FROM libros WHERE titulo IN ('Carrie', 'Nuevo libro', 'Example');
 
 -- Valores unicos en una consulta
 SELECT DISTINCT titulo FROM libros;
+
+-- Alias
+SELECT autor_id AS autor, titulo FROM libros;
+SELECT  9 * 10 AS Resultado;
+SELECT autor_id AS autor, titulo AS nombre FROM libros AS books; 
+SELECT books.autor_id AS books.autor, titulo AS nombre FROM libros AS books; 
+
+-- CRUD
+UPDATE libros SET descripcion = 'Nueva Descripcion' WHERE titulo = 'El Hobbit';
+DELETE FROM libros HHERE autor_id = 1; 
+
+-- Eliminacion en cascada
