@@ -70,5 +70,18 @@ SELECT * FROM autores;
 SELECT * FROM libros;
 
 /** NOTAS */
+
 -- ENUM -> Reinstriccion a una lista pequeña
 -- UNSIGED se previene la insersion de numeros negativos
+
+-- Si necesitamos validar el valor único de una combinación de columnas lo haremos de la siguiente manera.
+-- En este caso queremos validar que la combinación de nombre, apellido y matricula sean unicas en la tabla.
+
+-- CREATE TABLE usuarios( 
+--   usuario_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+--   nombre VARCHAR(50),
+--   apellido VARCHAR(50),
+--   matricula VARCHAR(10),
+--   CONSTRAINT unique_combinacion UNIQUE (nombre, apellido, matricula),
+--   PRIMARY KEY (usuario_id)
+-- );
