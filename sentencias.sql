@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS autores (
     nombre VARCHAR(25) NOT NULL,
     apellido VARCHAR(25) NOT NULL,
     seudonimo VARCHAR(50) UNIQUE,
-    genero CHAR(1) NOT NULL, -- M O F
+    genero ENUM('M', 'F'), -- M O F
     fecha_nacimiento DATE NOT NULL,
     pais_origen VARCHAR(40) NOT NULL,
     fecha_creacion DATETIME DEFAULT current_timestamp 
