@@ -9,7 +9,7 @@ Nombre: autores
 */ 
 
 CREATE TABLE IF NOT EXISTS autores (
-    autor_id INT UNSIGNED NOT NULL , -- UNSIGED se previene la insersion de numeros negativos
+    autor_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
     nombre VARCHAR(25) NOT NULL,
     apellido VARCHAR(25) NOT NULL,
     seudonimo VARCHAR(50) UNIQUE,
@@ -31,15 +31,19 @@ VALUES (1, 'Test Autor');
 
 */
 -- Multiples Autores
-INSERT INTO autores (autor_id, nombre, apellido, genero, fecha_nacimiento, pais_origen) VALUES 
-(1, 'Test Autor', 'Test Autor', 'M', '2018-01-30', 'Mexico'),
-(2, 'Test Autor', 'Test Autor', 'M', '2018-01-30', 'Mexico'),
-(3, 'Test Autor', 'Test Autor', 'M', '2018-01-30', 'Mexico'),
-(4, 'Test Autor', 'Test Autor', 'M', '2018-01-30', 'Mexico'),
-(5, 'Test Autor', 'Test Autor', 'M', '2018-01-30', 'Mexico');
+-- INSERT INTO autores (autor_id, nombre, apellido, genero, fecha_nacimiento, pais_origen) VALUES 
+-- (1, 'Test Autor', 'Test Autor', 'M', '2018-01-30', 'Mexico'),
+-- (2, 'Test Autor', 'Test Autor', 'M', '2018-01-30', 'Mexico'),
+-- (3, 'Test Autor', 'Test Autor', 'M', '2018-01-30', 'Mexico'),
+-- (4, 'Test Autor', 'Test Autor', 'M', '2018-01-30', 'Mexico'),
+-- (5, 'Test Autor', 'Test Autor', 'M', '2018-01-30', 'Mexico');
 
 
-INSERT INTO autores (autor_id, nombre, apellido, seudonimo,genero, fecha_nacimiento, pais_origen) VALUES 
-(6, 'Stephen Edwin', 'King', 'Richard Bachman', 'M', '1947-09-07', 'USA');
+INSERT INTO autores (nombre, apellido, seudonimo,genero, fecha_nacimiento, pais_origen) VALUES 
+( 'Stephen Edwin', 'King', 'Richard Bachmanaaaa', 'M', '1947-09-07', 'USA');
 
 SELECT * FROM autores;
+
+/** NOTAS */
+-- ENUM -> Reinstriccion a una lista pequeña
+-- UNSIGED se previene la insersion de numeros negativos
