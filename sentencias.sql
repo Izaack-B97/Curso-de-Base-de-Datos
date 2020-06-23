@@ -19,6 +19,18 @@ CREATE TABLE IF NOT EXISTS autores (
     fecha_creacion DATETIME DEFAULT current_timestamp 
 );
 
+CREATE TABLE libros(
+    libro_id INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    autor_id INT UNSIGNED NOT NULL,
+    titulo VARCHAR(50) NOT NULL,
+    descripcion VARCHAR(250),
+    paginas INTEGER UNSIGnED,
+    fecha_publicacion DATE NOT NULL,
+    fecha_creacion DATETIME DEFAULT current_timestamp,
+
+    FOREIGN KEY (autor_id) REFERENCES autores(autor_id)
+);
+
 --  Crea una tabla a partir de otra
 -- CREATE TABLE usuarios LIKE autores;
 
@@ -40,9 +52,22 @@ VALUES (1, 'Test Autor');
 
 
 INSERT INTO autores (nombre, apellido, seudonimo,genero, fecha_nacimiento, pais_origen) VALUES 
-( 'Stephen Edwin', 'King', 'Richard Bachmanaaaa', 'M', '1947-09-07', 'USA');
+( 'Stephen Edwinfdfd', 'Kingfdfd', 'Richard Bachmanfdaaaa', 'M', '1947-09-07', 'USA'),
+( 'Stephen Edwinf', 'Kingf', 'Richard Bachmanf', 'M', '1947-09-07', 'USA');
+
+INSERT INTO libros (autor_id, titulo, fecha_publicacion) VALUES
+(1, 'Carrie', '1974-01-01'),
+(1, 'Carrie', '1974-01-01'),
+(1, 'Carrie', '1974-01-01'),
+(2, 'Nuevo Libro', '1986-01-01'),
+(2, 'Nuevo Libro', '1986-01-01'),
+(2, 'Nuevo Libro', '1986-01-01'),
+(2, 'Nuevo Libro', '1986-01-01'),
+(2, 'Nuevo Libro', '1986-01-01'),
+(2, 'Nuevo Libro', '1986-01-01');
 
 SELECT * FROM autores;
+SELECT * FROM libros;
 
 /** NOTAS */
 -- ENUM -> Reinstriccion a una lista pequeña
