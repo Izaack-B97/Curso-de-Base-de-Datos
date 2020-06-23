@@ -9,7 +9,7 @@ Nombre: autores
 */ 
 
 CREATE TABLE IF NOT EXISTS autores (
-    autor_id INT NOT NULL,
+    autor_id INT UNSIGNED NOT NULL , -- UNSIGED se previene la insersion de numeros negativos
     nombre VARCHAR(25) NOT NULL,
     apellido VARCHAR(25) NOT NULL,
     seudonimo VARCHAR(50) UNIQUE,
