@@ -85,3 +85,22 @@ SELECT * FROM libros;
 --   CONSTRAINT unique_combinacion UNIQUE (nombre, apellido, matricula),
 --   PRIMARY KEY (usuario_id)
 -- );
+
+-- OPERADORES LOGICOS
+-- AND 
+-- OR
+-- NOT
+
+-- CONDICIONANDO NULLOS
+-- select * from autores where seudonimo is not  null;
+-- select * from autores where seudonimo is null;
+-- select * from autores where seudonimo <=> null; <=> Operador de seguridad
+
+-- Rangos
+SELECT titulo, fecha_publicacion FROM libros WHERE fecha_publicacion BETWEEN '1995-01-01' AND '2015-01-31';
+
+-- Obteniendo una  consulta a travez de una lista
+SELECT * FROM libros WHERE titulo IN ('Carrie', 'Nuevo libro', 'Example');
+
+-- Valores unicos en una consulta
+SELECT DISTINCT titulo FROM libros;
