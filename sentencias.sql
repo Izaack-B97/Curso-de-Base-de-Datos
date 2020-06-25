@@ -146,3 +146,12 @@ select rand(); -- Numeros flotantes
 select round( rand() * 100 ); -- Numero ´positivo flotante
 SELECT TRUNCATE(1.123456789, 3); -- trunca el numero de decimales
 SELECT POW(2,16);--Eleva a una potencia
+
+-- Fechas
+select now(); -- Fecha actual
+@now = NOW();
+SELECT SECOND(@now), MINUTE(@now), HOUR(@now), MONTH(@now), YEAR(@now);
+SELECT DAYOFWEEK(@now), DAYOFMONTH(@now), DAYOFYEAR(@now);
+SELECT DATE(@now); -- TIMESTAM OF DATE
+SELECT * FROM libros WHERE DATE(fecha_creacion) = CURDATE(); -- Libros que se crearon el dia de hoy
+SELECT @now + INTERVAL 30 DAYS; -- Suma dias a la fecha
