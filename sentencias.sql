@@ -140,3 +140,9 @@ SELECT LENGTH("hOLA MUNDO"); -- Longitud
 SELECT UPPER(nombre), LOWER(nombre) FROM autores; -- Mayusculas y minusculas
 SELECT TRIM("     cadena con espacios al inicio y al final     "); -- Limía espacios al princio y al final
 SELECT LEFT("Esta es una cadena de caracteres", 5) AS susbstring_izq, RIGHT("Esta es una cadena de caracteres", 10) AS susbstring_der; -- Optiene subtrings
+
+-- Numeros
+select rand(); -- Numeros flotantes
+select round( rand() * 100 ); -- Numero ´positivo flotante
+SELECT TRUNCATE(1.123456789, 3); -- trunca el numero de decimales
+SELECT POW(2,16);--Eleva a una potencia
