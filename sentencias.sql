@@ -4,9 +4,12 @@ CREATE DATABASE IF NOT EXISTS libreria_cf;
 
 USE libreria_cf;
 
-/*  ¿Que tipo de entidades? autores
-Nombre: autores 
+
+/*
+    ¿Que tipo de entidades? autores
+    Nombre: autores 
 */ 
+
 
 CREATE TABLE IF NOT EXISTS autores (
     autor_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
@@ -18,6 +21,7 @@ CREATE TABLE IF NOT EXISTS autores (
     pais_origen VARCHAR(40) NOT NULL,
     fecha_creacion DATETIME DEFAULT current_timestamp 
 );
+
 
 CREATE TABLE libros(
     libro_id INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,
@@ -31,7 +35,6 @@ CREATE TABLE libros(
     FOREIGN KEY (autor_id) REFERENCES autores(autor_id) ON DELETE CASCADE
 
     -- ALTER TABLE libros ADD FOREIGN KEY (autor_id) REFERENCES autores(autor_id) ON DELETE CASCADE
-
 );
 
 --  Crea una tabla a partir de otra
@@ -56,18 +59,26 @@ VALUES (1, 'Test Autor');
 
 INSERT INTO autores (nombre, apellido, seudonimo,genero, fecha_nacimiento, pais_origen) VALUES 
 ( 'Stephen Edwinfdfd', 'Kingfdfd', 'Richard Bachmanfdaaaa', 'M', '1947-09-07', 'USA'),
-( 'Stephen Edwinf', 'Kingf', 'Richard Bachmanf', 'M', '1947-09-07', 'USA');
+( 'Stephen Edwinf', 'Kingf', 'Richard Bachmanf', 'M', '1947-09-07', 'USA'),
+('J.D.', 'Salinger', 'JD Sal', 'M', '1920-10-05', 'USA'),
+('F. Scott.', 'Fitzgerald', 'DSSC',  'M', '1920-05-01', 'USA'),
+('Jane', 'Austen', 'JNA', 'F', '1910-10-05', 'UK'),
+('Scott', 'Hanselman', 'SH', 'M', '1975-02-28', 'USA'),
+('Jason N.', 'Gaylord', 'El Gringo', 'M','1918-06-10' ,'USA'),
+('Pranav', 'Rastogi', 'Rinho', 'M', '1950-06-12', 'India'),
+('Todd', 'Miranda', 'Tdd', 'M', '1968-12-10', 'USA'),
+('Christian', 'Wenz', 'Wewer', 'M', '1967-04-12', 'USA');
 
 INSERT INTO libros (autor_id, titulo, fecha_publicacion) VALUES
 (1, 'Carrie', '1974-01-01'),
-(1, 'Carrie', '1974-01-01'),
-(1, 'Carrie', '1974-01-01'),
 (2, 'Nuevo Libro', '1986-01-01'),
-(2, 'Nuevo Libro', '1986-01-01'),
-(2, 'Nuevo Libro', '1986-01-01'),
-(2, 'Nuevo Libro', '1986-01-01'),
-(2, 'Nuevo Libro', '1986-01-01'),
-(2, 'Nuevo Libro', '1986-01-01');
+(1, 'The Catcher in the Rye', '1956-10-14'),
+(2, 'Nine Stories', '1969-01-13'),
+(3, 'Franny and Zooey', '1920-10-10'),
+(4, 'The Great Gatsby', '1936-12-10'),
+(5, 'Tender id the Night', '1945-06-01'),
+(6, 'Pride and Prejudice', '1930-11-25'),
+(7, 'Professional ASP.NET 4.5 in C# and VB', '1937-05-28');
 
 SELECT * FROM autores;
 SELECT * FROM libros;
@@ -99,6 +110,7 @@ SELECT * FROM libros;
 -- select * from autores where seudonimo is null;
 -- select * from autores where seudonimo <=> null; <=> Operador de seguridad
 
+
 -- Rangos
 SELECT titulo, fecha_publicacion FROM libros WHERE fecha_publicacion BETWEEN '1995-01-01' AND '2015-01-31';
 
@@ -120,3 +132,11 @@ DELETE FROM libros HHERE autor_id = 1;
 
 -- Restauracion de una tabla 
 TRUNCATE TABLE libros -- Elimina todos los registros de una tabla, resetea la definicion de la tabla
+
+/* FUNCIONES */
+-- Strings
+SELECT CONCAT(nombre, " ",apellido) From autores; -- concat concatena strings, puede resivir cualquier no. de argumentos
+SELECT LENGTH("hOLA MUNDO"); -- Longitud
+SELECT UPPER(nombre), LOWER(nombre) FROM autores; -- Mayusculas y minusculas
+SELECT TRIM("     cadena con espacios al inicio y al final     "); -- Limía espacios al princio y al final
+SELECT LEFT("Esta es una cadena de caracteres", 5) AS susbstring_izq, RIGHT("Esta es una cadena de caracteres", 10) AS susbstring_der; -- Optiene subtrings
