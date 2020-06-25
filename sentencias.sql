@@ -161,3 +161,10 @@ SELECT IF(10 > 9, "El numero si es mayor", "El numero no es mayor");
 SELECT IF(paginas = 0, "El libro no posee paginas", paginas) FROM libros;
 
 SELECT IFNULL(seudonimo, "El autor no cuenta con un seudonimo") FROM autores;
+
+-- Busqueda mediante strings
+SELECT * FROM libros WHERE titulo LIKE 'Franny%'; -- ASubstring al principio de una cadena
+SELECT * FROM libros WHERE titulo LIKE '%Zooey';  -- Al final de una caadena
+SELECT * FROM libros WHERE titulo LIKE '%a%'; -- Entre la cadena 
+SELECT * FROM libros WHERE titulo LIKE '__r___'; -- Titulo con 6 caracteres y la tewrcer letra sea r
+select * from libros where titulo like '_a%'; -- Segundo caracter en el principio sea a
