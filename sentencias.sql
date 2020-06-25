@@ -154,4 +154,10 @@ SELECT SECOND(@now), MINUTE(@now), HOUR(@now), MONTH(@now), YEAR(@now);
 SELECT DAYOFWEEK(@now), DAYOFMONTH(@now), DAYOFYEAR(@now);
 SELECT DATE(@now); -- TIMESTAM OF DATE
 SELECT * FROM libros WHERE DATE(fecha_creacion) = CURDATE(); -- Libros que se crearon el dia de hoy
-SELECT @now + INTERVAL 30 DAYS; -- Suma dias a la fecha
+SELECT @now + INTERVAL 30 DAYS; -- Suma dias a la fecha (SECOND, MINUTE, HOUR, DAY, WEEK, MONTH, YEAR)
+
+-- Condicones
+SELECT IF(10 > 9, "El numero si es mayor", "El numero no es mayor");
+SELECT IF(paginas = 0, "El libro no posee paginas", paginas) FROM libros;
+
+SELECT IFNULL(seudonimo, "El autor no cuenta con un seudonimo") FROM autores;
