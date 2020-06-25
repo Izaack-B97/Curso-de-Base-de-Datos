@@ -168,3 +168,9 @@ SELECT * FROM libros WHERE titulo LIKE '%Zooey';  -- Al final de una caadena
 SELECT * FROM libros WHERE titulo LIKE '%a%'; -- Entre la cadena 
 SELECT * FROM libros WHERE titulo LIKE '__r___'; -- Titulo con 6 caracteres y la tewrcer letra sea r
 select * from libros where titulo like '_a%'; -- Segundo caracter en el principio sea a
+
+SELECT autor_id, titulo FROM libros WHERE titulo LIKE 'H%' OR LIKE 'L%'; 
+SELECT autor_id, titulo FROM libros  WHERE LEFT(titulo, 1) = 'H' OR RIGHT(titulo, 1) = 'L';
+
+-- Expresiones regulares
+ SELECT titulo FROM libros WHERE titulo REGEXP '^[HL]'; -- Comienza H y termina con L
