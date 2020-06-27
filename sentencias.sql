@@ -31,6 +31,7 @@ CREATE TABLE libros(
     paginas INTEGER UNSIGnED,
     fecha_publicacion DATE NOT NULL,
     fecha_creacion DATETIME DEFAULT current_timestamp,
+    ventas INT DEFAULT 10,
 
     FOREIGN KEY (autor_id) REFERENCES autores(autor_id) ON DELETE CASCADE
 
@@ -174,3 +175,25 @@ SELECT autor_id, titulo FROM libros  WHERE LEFT(titulo, 1) = 'H' OR RIGHT(titulo
 
 -- Expresiones regulares
  SELECT titulo FROM libros WHERE titulo REGEXP '^[HL]'; -- Comienza H y termina con L
+
+ -- Ordenacion
+SELECT titulo FROM libros ORDER BY titulo;
+SELECT titulo FROM libros ORDER BY titulo DESC;
+SELECT libro_id, titulo FROM libros ORDER BY libro_id AND titulo ASC;
+
+-- Limitar los registros
+SELECT titulo FROM libros LIMIT 10;
+SELECT libro_id, titulo FROM libros LIMIT 0, 5; -- Paginacion
+
+/* FUNCIONES DE AGREGACION */
+ SELECT COUNT(*) FROM autores; -- Acepta las columnas, y es un contador
+ SELECT SUM(ventas) FROM libros; -- Suma los valores
+ SELECT MAX(ventas) FROM libros; -- Valor Maximo
+ SELECT MIN(ventas) FROM libros; -- Valor Minimo
+ SELECT AVG(ventas) FROM libros; -- Promedio
+
+ -- Algo interesante es que solo se tomaran los registros que posean un valor
+
+ -- Agrupamiento
+SELECT autor_id, SUM(ventas) AS Total FROM libros GROUP BY autor_id;
+SELECT autor_id, SUM(ventas) AS Total FROM libros GROUP BY autor_id ORDER BY Total ASC LIMIT 1;
