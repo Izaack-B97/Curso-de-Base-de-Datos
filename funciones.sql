@@ -29,3 +29,7 @@ END//
 DELIMITER ;
 
 UPDATE libros SET paginas = obtener_paginas();
+
+-- Ordenacion
+SELECT titulo FROM libros ORDER BY titulo
+SELECT titulo FROM libros ORDER BY titulo DESC
