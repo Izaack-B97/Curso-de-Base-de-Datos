@@ -197,3 +197,6 @@ SELECT libro_id, titulo FROM libros LIMIT 0, 5; -- Paginacion
  -- Agrupamiento
 SELECT autor_id, SUM(ventas) AS Total FROM libros GROUP BY autor_id;
 SELECT autor_id, SUM(ventas) AS Total FROM libros GROUP BY autor_id ORDER BY Total ASC LIMIT 1;
+
+-- Heaving -> Se usa en vez del where 
+SELECT auntor_id, SUM(ventas) AS Total FROM libros GROUP BY autor_id HAVING SUMA(ventas) > 1000
