@@ -38,6 +38,15 @@ CREATE TABLE libros(
     -- ALTER TABLE libros ADD FOREIGN KEY (autor_id) REFERENCES autores(autor_id) ON DELETE CASCADE
 );
 
+CREATE TABLE usuarios(
+    usuario_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(25) NOT NULL,
+    apellidos VARCHAR(25),
+    username VARCHAR(25) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    fecha_creacion DATETIME DEFAULT current_timestamp
+);
+
 --  Crea una tabla a partir de otra
 -- CREATE TABLE usuarios LIKE autores;
 
@@ -80,6 +89,10 @@ INSERT INTO libros (autor_id, titulo, fecha_publicacion) VALUES
 (5, 'Tender id the Night', '1945-06-01'),
 (6, 'Pride and Prejudice', '1930-11-25'),
 (7, 'Professional ASP.NET 4.5 in C# and VB', '1937-05-28');
+
+INSERT INTO usuarios(nombre, apellidos, username, email) VALUES
+('Eduardo', 'Garcia', 'eduardogpg', 'eduardo@codigofacilito.com'),
+('Codi', 'Facilito', 'codigofacilito', 'ayuda@codigofacilito.com');
 
 SELECT * FROM autores;
 SELECT * FROM libros;
@@ -199,4 +212,34 @@ SELECT autor_id, SUM(ventas) AS Total FROM libros GROUP BY autor_id;
 SELECT autor_id, SUM(ventas) AS Total FROM libros GROUP BY autor_id ORDER BY Total ASC LIMIT 1;
 
 -- Heaving -> Se usa en vez del where 
-SELECT auntor_id, SUM(ventas) AS Total FROM libros GROUP BY autor_id HAVING SUMA(ventas) > 1000
+SELECT auntor_id, SUM(ventas) AS Total FROM libros GROUP BY autor_id HAVING SUMA(ventas) > 1000;
+
+-- Unir dos consultas
+SELECT CONCAT(nombre, " ", apellido) AS nombre_completo FROM autores 
+UNION 
+SELECT CONCAT(nombre, " ", apellidos) AS nombre_completo FROM usuarios;
+
+SELECT CONCAT(nombre, " ", apellido) AS nombre_completo, "" AS email FROM autores 
+UNION 
+SELECT CONCAT(nombre, " ", apellidos) AS nombre_completo, email AS email FROM usuarios;
+
+/* SUBCONSULTAS*/
+SET @promedio = (SELECT AVG(ventas) FROM libros);
+SELECT autor_id, ventas FROM libros GROUP BY autor_id HAVING SUM(ventas) > 10.0000;
+
+SELECT autor_id FROM libros GROUP BY autor_id 
+HAVING SUM(ventas) > (SELECT AVG(ventas) FROM libros); 
+
+SELECT CONCAT(nombre, " ", apellido) AS autores FROM autores
+WHERE autor_id 
+IN ( 
+    SELECT autor_id FROM libros GROUP BY autor_id 
+    HAVING SUM(ventas) > (SELECT AVG(ventas) FROM libros)
+);
+
+-- Validar Registros
+SELECT IF(
+    EXISTS(SELECT libro_id FROM libros WHERE titulo = 'El Hobbit'),
+    'Disponible',
+    'No disponible'
+) AS mensaje;
