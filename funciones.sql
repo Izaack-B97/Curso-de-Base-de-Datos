@@ -38,3 +38,12 @@ SELECT libro_id, titulo FROM libros ORDER BY libro_id AND titulo ASC;
 -- Limitar los registros
 SELECT titulo FROM libros LIMIT 10;
 SELECT libro_id, titulo FROM libros LIMIT 0, 5; -- Paginacion
+
+/* FUNCIONES DE AGREGACION */
+ SELECT COUNT(*) FROM autores; -- Acepta las columnas, y es un contador
+ SELECT SUM(ventas) FROM libros; -- Suma los valores
+ SELECT MAX(ventas) FROM libros; -- Valor Maximo
+ SELECT MIN(ventas) FROM libros; -- Valor Minimo
+ SELECT AVG(ventas) FROM libros; -- Promedio
+
+ -- Algo interesante es que solo se tomaran los registros que posean un valor
