@@ -4,12 +4,10 @@ CREATE DATABASE IF NOT EXISTS libreria_cf;
 
 USE libreria_cf;
 
-
 /*
     ¿Que tipo de entidades? autores
     Nombre: autores 
 */ 
-
 
 CREATE TABLE IF NOT EXISTS autores (
     autor_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
@@ -243,3 +241,29 @@ SELECT IF(
     'Disponible',
     'No disponible'
 ) AS mensaje;
+
+/* EJERCICIOS */
+-- Obtener todos los libros escritos por autores que cuenten con un seudónimo.
+
+SELECT titulo, autor_id FROM libros WHERE autor_id IN ( SELECT autor_id FROM autores WHERE seudonimo IS NOT NULL )
+
+--Obtener el título de todos los libros publicados a partir de 1990 cuyos autores poseen un pseudónimo.
+SELECT titulo, autor_id FROM libros WHERE autor_id IN ( SELECT autor_id FROM autores WHERE seudonimo IS NOT NULL ) AND fecha_publicacion > '1990-01-01'
+
+--Obtener todos los libros escritos por autores que cuenten con un seudónimo y que hayan nacido ante de 1950.
+
+SELECT titulo, autor_id FROM libros WHERE autor_id IN ( SELECT autor_id FROM autores WHERE seudonimo IS NOT NULL AND fecha_nacimiento < '1950-01-01');
+
+--Colocar el mensaje no disponible a la columna descripción, en todos los libros publicados antes del año 2000.
+
+
+
+/* JOINS */
+--Inner join, elementos que se encuentren en la interseccion de dos tablas
+SELECT 
+    libros.titulo, 
+    CONCAT(autores.nombre, " ", autores.apellido) AS nombre_autor, 
+    libros.fecha_creacion 
+FROM libros AS li
+INNER JOIN autores AS au 
+ON li.autor_id = au.autor_id;
